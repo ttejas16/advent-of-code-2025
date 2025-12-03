@@ -19,6 +19,11 @@ function part1(ids) {
     }
     return result;
 }
+/**
+ * generate pairs of specified length from numString
+ * if numString = abcd and pairSize = 2
+ * output is ab,cd
+ */
 function generatePairs(numString, pairLength) {
     const result = [];
     for (let i = 0; i < numString.length; i += pairLength) {
@@ -46,6 +51,9 @@ function part2(ids) {
                 }
             }
             else {
+                // i know this is bad but the numbers are less than 15 digits or so 
+                // thats why this works obviously bad for numbers with more digits
+                // takes about 1sec for my input
                 for (let pairSize = 1; pairSize <= Math.trunc(numString.length / 2); pairSize++) {
                     const pairs = generatePairs(numString, pairSize);
                     if (new Set(pairs).size == 1) {

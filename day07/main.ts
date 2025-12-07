@@ -52,6 +52,7 @@ function part1(grid: string[], start: number[]) {
     return activatedSplitters.size;
 }
 
+// returns a tree from input
 function constructTree(grid: string[]) {
     const result = new Map<string, string[]>();
 
@@ -107,6 +108,7 @@ function constructTree(grid: string[]) {
     return result;
 }
 
+// seen set because two nodes might have a same child
 const seen = new Map<string, number>();
 
 function dfs(nodeString: string, tree: Map<string, string[]>) {
@@ -127,10 +129,10 @@ function dfs(nodeString: string, tree: Map<string, string[]>) {
 
 
 function part2(grid: string[]) {
-    const tree = constructTree(grid);
+    const tree = constructTree(grid); // this is adjacency list
     // console.log(tree);
     
-    const rootPosition = [2, grid[2].indexOf("^")];
+    const rootPosition = [2, grid[2].indexOf("^")]; // for root position
     const result = dfs(`${rootPosition[0]},${rootPosition[1]}`, tree);
 
     return result;
